@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  wechatbot:
+    image: wechaty/wechaty:0.62
+    container_name: bot
+    restart: always
+    labels:
+      container: vyron
+    volumes:
+      - ./:/bot
+    command: ["src/index.ts"]

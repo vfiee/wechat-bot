@@ -1,0 +1,6 @@
+
+# 获取天气情况
+Get https://gaode.com/service/weather?adcode=410100
+
+# 获取位置信息
+Get https://gaode.com/service/regeo?longitude=113.544109&latitude=34.806363
