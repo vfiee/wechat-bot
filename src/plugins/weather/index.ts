@@ -1,16 +1,16 @@
 /*
  * @Author: vyron
  * @Date: 2021-08-14 22:51:42
- * @LastEditTime: 2021-09-11 22:25:11
+ * @LastEditTime: 2021-10-01 13:03:05
  * @LastEditors: vyron
  * @Description: Bot weather plugin
  * @FilePath: /wechat-bot/src/plugins/weather/index.ts
  */
 // @ts-ignore
-import { Contact, Message, Wechaty } from "/wechaty";
-import configs, { WeatherTemplateData, WeatherConfig } from "./config";
-import { setScheduleJob, sendMessageToOwner, getBot } from "../../utils";
-import { getWeather } from "../../api/weather";
+import {Contact, Message, Wechaty} from "/wechaty";
+import configs, {WeatherTemplateData, WeatherConfig} from "./config";
+import {setScheduleJob, sendMessageToOwner, getBot} from "../../utils";
+import {getWeather} from "../../api/weather";
 
 const msg = (msg: string) => `[Weather] ${msg}`;
 
@@ -20,9 +20,9 @@ export const sendWeatherMessage = async (
 ) => {
 	contact =
 		contact ||
-		(await getBot().Contact.find({ name: config.contactName })) ||
-		(await getBot().Contact.find({ alias: config.contactName })) ||
-		(await getBot().Contact.find({ name: config.contactId }));
+		(await getBot().Contact.find({name: config.contactName})) ||
+		(await getBot().Contact.find({alias: config.contactName})) ||
+		(await getBot().Contact.find({name: config.contactId}));
 	if (!contact) {
 		await sendMessageToOwner(
 			msg(
@@ -54,13 +54,9 @@ const weather = (bot: Wechaty) => {
 		configs
 			.filter(config => !config.disabled)
 			.forEach(config => {
-				setScheduleJob(
-					{ tz: "Asia/Shanghai", rule: config.scheduler },
-					fireDate => {
-						console.log(`fireDate:`, fireDate);
-						sendWeatherMessage(config);
-					}
-				);
+				setScheduleJob({tz: "Asia/Shanghai", rule: config.scheduler}, () => {
+					sendWeatherMessage(config);
+				});
 			});
 	});
 };

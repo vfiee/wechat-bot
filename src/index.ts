@@ -1,5 +1,5 @@
 // @ts-ignore
-import { Wechaty, Contact } from "/wechaty";
+import {Wechaty, Contact} from "/wechaty";
 import {
 	QRCodeTerminal,
 	EventLogger,

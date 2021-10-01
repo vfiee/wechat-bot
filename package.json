@@ -5,7 +5,7 @@
   "author": "vyron",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node src/index.ts"
+    "dev": "nodemon --config nodemon.json"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -18,6 +18,7 @@
   },
   "devDependencies": {
     "@types/node-schedule": "^1.3.2",
+    "nodemon": "^2.0.13",
     "ts-node": "^10.2.1",
     "typescript": "^4.4.3"
   }

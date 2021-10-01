@@ -1,13 +1,13 @@
 /*
  * @Author: vyron
  * @Date: 2021-08-15 14:16:53
- * @LastEditTime: 2021-09-11 22:07:09
+ * @LastEditTime: 2021-10-01 12:48:32
  * @LastEditors: vyron
  * @Description: Owner
  * @FilePath: /wechat-bot/src/utils/owner/index.ts
  */
 // @ts-ignore
-import { Contact, Message, Wechaty } from "/wechaty";
+import {Contact, Message, Wechaty} from "/wechaty";
 
 // 获取机器人实例
 let _bot: Wechaty;
@@ -16,12 +16,18 @@ export const getBot = (): Wechaty => _bot || (_bot = Wechaty.instance());
 // 获取主人 vyron
 let _owner: Contact;
 export const getOwner = () =>
-	_owner || (_owner = getBot().Contact.load("wxid_eeon597kjr7i22"));
+	_owner ||
+	(_owner = getBot().Contact.load(
+		"@779ddaa497fc187b86b18b36b373d42c5f32df6d9b8307a3800392b0838aee39"
+	));
 
 // 获取自己 vyronJ
 let _self: Contact;
 export const getSelf = () =>
-	_self || (_self = getBot().Contact.load("wxid_rzbcle30eygs12"));
+	_self ||
+	(_self = getBot().Contact.load(
+		"@465789b6c66cb0127373e923206a29d3572223648f60c133de0e968da18563d9"
+	));
 
 // 向主人发送消息
 export const sendMessageToOwner = async (message: string) => {
@@ -36,6 +42,7 @@ export function isOwner(id: Contact): boolean;
 
 export function isOwner(id: string | Contact) {
 	const owner = getOwner();
+	console.log(`owner:`, owner);
 	return owner && id && owner.id === (typeof id === "string" ? id : id.id);
 }
 

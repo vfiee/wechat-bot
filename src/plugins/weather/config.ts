@@ -1,7 +1,7 @@
 /*
  * @Author: vyron
  * @Date: 2021-08-15 00:06:09
- * @LastEditTime: 2021-08-29 10:19:35
+ * @LastEditTime: 2021-10-01 13:13:24
  * @LastEditors: vyron
  * @Description: 天气配置文件
  * @FilePath: /wechat-bot/src/plugins/weather/config.ts
@@ -72,8 +72,7 @@ const config: WeatherConfig[] = [
 	{
 		contactId: "xiaohui-up",
 		contactName: "A小慧",
-		// scheduler: "0 0 9 *",
-		scheduler: "0 50 22 * * *",
+		scheduler: "0 0 8 * * *",
 		prefix: "亲爱的宝贝~ ",
 		suffix: "新的一天,新的开始,保持好心情,继续加油! 奥利给💋💋💋",
 		template: defaultWeatherMessageTemplate,
@@ -85,8 +84,7 @@ const config: WeatherConfig[] = [
 	{
 		contactId: "姜先生",
 		contactName: "vyron",
-		// scheduler: "0 0 9 *",
-		scheduler: "0 50 22 * * *",
+		scheduler: "0 0 8 * * *",
 		prefix: "主人早上好~ ",
 		suffix: "祝主人整天心情愉快 🥰🥰🥰",
 		template: defaultWeatherMessageTemplate,
