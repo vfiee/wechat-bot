@@ -1,7 +1,7 @@
 /*
  * @Author: vyron
  * @Date: 2021-08-14 22:57:40
- * @LastEditTime: 2021-08-29 10:20:29
+ * @LastEditTime: 2021-10-05 18:12:33
  * @LastEditors: vyron
  * @Description: 工具类
  * @FilePath: /wechat-bot/src/utils/index.ts
@@ -22,3 +22,5 @@ export const debounce = (
 		timer = setTimeout(fn.bind(null, ...args), wait);
 	};
 };
+
+export const BLANK = () => {};

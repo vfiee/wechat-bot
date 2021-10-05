@@ -1,7 +1,7 @@
 /*
  * @Author: vyron
  * @Date: 2021-08-15 14:16:53
- * @LastEditTime: 2021-10-01 12:48:32
+ * @LastEditTime: 2021-10-05 17:28:47
  * @LastEditors: vyron
  * @Description: Owner
  * @FilePath: /wechat-bot/src/utils/owner/index.ts
@@ -13,45 +13,43 @@ import {Contact, Message, Wechaty} from "/wechaty";
 let _bot: Wechaty;
 export const getBot = (): Wechaty => _bot || (_bot = Wechaty.instance());
 
-// 获取主人 vyron
+// 主人 vyron
 let _owner: Contact;
-export const getOwner = () =>
+export const getOwner = async () =>
 	_owner ||
-	(_owner = getBot().Contact.load(
-		"@779ddaa497fc187b86b18b36b373d42c5f32df6d9b8307a3800392b0838aee39"
-	));
+	(_owner = (await getBot().Contact.find({name: "vyron"})) as Contact);
 
-// 获取自己 vyronJ
-let _self: Contact;
-export const getSelf = () =>
-	_self ||
-	(_self = getBot().Contact.load(
-		"@465789b6c66cb0127373e923206a29d3572223648f60c133de0e968da18563d9"
-	));
+// 设置拥有者
+export const setOwner = (contact: Contact) => (_owner = contact);
+
+// 判断是否为主人
+export async function isOwner(id: string): Promise<boolean>;
+export async function isOwner(id: Contact): Promise<boolean>;
+export async function isOwner(id: string | Contact) {
+	const owner = await getOwner();
+	return owner && id && owner.id === (typeof id === "string" ? id : id.id);
+}
 
 // 向主人发送消息
 export const sendMessageToOwner = async (message: string) => {
-	const owner = getOwner();
+	const owner = await getOwner();
 	if (!owner) return;
 	owner.say(message);
 };
 
-// 判断是否为主人
-export function isOwner(id: string): boolean;
-export function isOwner(id: Contact): boolean;
+// 自己 vyronJ
+let _self: Contact;
+export const getSelf = async () =>
+	_self || (_self = (await getBot().Contact.find({name: "vyronJ"})) as Contact);
 
-export function isOwner(id: string | Contact) {
-	const owner = getOwner();
-	console.log(`owner:`, owner);
-	return owner && id && owner.id === (typeof id === "string" ? id : id.id);
-}
+export const setSelf = (self: Contact) => (_self = self);
 
 // 判断是否为自己
-export function isSelf(id: string): boolean;
-export function isSelf(id: Contact): boolean;
+export async function isSelf(id: string): Promise<boolean>;
+export async function isSelf(id: Contact): Promise<boolean>;
 
-export function isSelf(id: string | Contact) {
-	const self = getSelf();
+export async function isSelf(id: string | Contact) {
+	const self = await getSelf();
 	return self && id && self.id === (typeof id === "string" ? id : id.id);
 }
 

@@ -7,10 +7,12 @@ import {
 	RoomInvitationAccepter
 } from "wechaty-plugin-contrib";
 import plugins from "./plugins";
+import {setSelf} from "./utils";
 
-const onLogin = (user: Contact) => {
+const onLogin = async (user: Contact) => {
 	// 通知机器人主人登录成功
 	console.log(`onLogin:`, user);
+	setSelf(user);
 };
 const onLogOut = (user: Contact) => {
 	// 通知机器人主人退出登录
@@ -23,7 +25,7 @@ const onError = (err: any, isExit: boolean = false) => {
 };
 
 async function run() {
-	const bot = Wechaty.instance({ name: "wechat-bot" });
+	const bot = Wechaty.instance({name: "wechat-bot"});
 	bot.use([
 		QRCodeTerminal(),
 		EventLogger(),
