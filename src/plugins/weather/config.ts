@@ -1,7 +1,7 @@
 /*
  * @Author: vyron
  * @Date: 2021-08-15 00:06:09
- * @LastEditTime: 2021-10-05 19:17:36
+ * @LastEditTime: 2021-10-05 19:33:26
  * @LastEditors: vyron
  * @Description: 天气配置文件
  * @FilePath: /wechat-bot/src/plugins/weather/config.ts
@@ -27,9 +27,11 @@ export type WeatherPosition = {
 	latitude: number;
 };
 
+type TimeMap = [number[], string];
+
 const getGreetByTime = () => {
 	const hours = Number(new Date().getHours());
-	const maps = [
+	const timeMaps: TimeMap[] = [
 		[[5, 6], "清晨"],
 		[[7, 11], "早上"],
 		[[11, 13], "中午"],
@@ -38,7 +40,7 @@ const getGreetByTime = () => {
 		[[24, 5], "凌晨"]
 	];
 	let res = "";
-	for (const [time, greet] of maps) {
+	for (const [time, greet] of timeMaps) {
 		const [min, max] = time;
 		if (hours > min && hours <= max) {
 			res = greet as string;
