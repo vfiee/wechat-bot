@@ -7,6 +7,8 @@ services:
     restart: always
     labels:
       container: vyron
+    environment:
+      - TZ=Asia/Shanghai
     volumes:
       - ./:/bot
     command: ["src/index.ts"]

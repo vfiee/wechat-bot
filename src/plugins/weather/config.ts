@@ -147,8 +147,8 @@ const config: WeatherConfig[] = [
 		suffix: "新的一天,新的开始,保持好心情,继续加油码代码! 奥利给👍👍👍",
 		template: defaultWeatherMessageTemplate,
 		position: {
-			longitude: 114.026334,
-			latitude: 33.013271
+			longitude: 114.102989,
+			latitude: 32.084698
 		}
 	}
 ];
