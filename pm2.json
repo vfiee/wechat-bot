@@ -1,0 +1,8 @@
+{
+    "apps": {
+        "name": "nodeTest",
+        "interpreter": "./node_modules/.bin/ts-node",
+        "cwd": "./",
+        "script": "./src/index.ts"
+    }
+}

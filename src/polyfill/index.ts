@@ -8,7 +8,7 @@
  */
 
 // @ts-ignore
-import {Message} from "/wechaty";
+import {Message} from "wechaty";
 
 export async function mentionSelf(this: Message): Promise<boolean> {
 	const mentionList = await this.mentionList();

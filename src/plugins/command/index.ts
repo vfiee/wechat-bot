@@ -7,7 +7,7 @@
  * @FilePath: /wechat-bot/src/plugins/command/index.ts
  */
 // @ts-ignore
-import { Message, Wechaty } from "/wechaty"
+import { Message, Wechaty } from "wechaty"
 import { BLANK } from "../../utils"
 import { sendWeatherMessage } from "../weather"
 import configs, { WeatherConfig } from "../weather/config"
