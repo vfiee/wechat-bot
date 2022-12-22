@@ -11,12 +11,11 @@
                 "run-script",
                 "dev"
             ],
-            "runtimeExecutable": "npm",
+            "runtimeExecutable": "pnpm",
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "type": "pwa-node"
+            "type": "node"
         }
-       
     ]
 }

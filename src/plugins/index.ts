@@ -1,4 +1,4 @@
-import weather from "./weather";
-import command from "./command";
+import weather from './weather/index.js'
+import command from './command/index.js'
 
-export default [weather, command];
+export default [weather, command]

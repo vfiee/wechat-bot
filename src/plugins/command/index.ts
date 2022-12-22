@@ -1,20 +1,20 @@
 /*
  * @Author: vyron
  * @Date: 2021-08-14 22:51:42
- * @LastEditTime: 2021-10-25 09:54:12
+ * @LastEditTime: 2022-12-16 16:19:10
  * @LastEditors: vyron
  * @Description: Bot command plugin
  * @FilePath: /wechat-bot/src/plugins/command/index.ts
  */
 // @ts-ignore
-import { Message, Wechaty } from "wechaty"
-import { BLANK } from "../../utils"
-import { sendWeatherMessage } from "../weather"
-import configs, { WeatherConfig } from "../weather/config"
+import { Message, Wechaty } from 'wechaty'
+import { BLANK } from '../../utils/index.js'
+import { sendWeatherMessage } from '../weather/index.js'
+import configs, { WeatherConfig } from '../weather/config.js'
 
 enum Commands {
-  WEATHER = "@天气",
-  ROOM_KICK = "@踢",
+  WEATHER = '@天气',
+  ROOM_KICK = '@踢'
 }
 
 type CommandFunction = (msg: Message, command: string) => void
@@ -26,14 +26,14 @@ type CommandMaps = {
 const runServiceByCommand = async (command: string, msg: Message) => {
   const commands: CommandMaps = {
     [Commands.WEATHER]: weather,
-    [Commands.ROOM_KICK]: BLANK,
+    [Commands.ROOM_KICK]: BLANK
   }
   const fn = commands[command]
-  fn && typeof fn === "function" && fn(msg, command as Commands)
+  fn && typeof fn === 'function' && fn(msg, command as Commands)
 }
 
 const command = (bot: Wechaty) => {
-  bot.on("message", async (msg: Message) => {
+  bot.on('message', async (msg: Message) => {
     if (msg.self()) return
     const text = await msg.mentionText()
     const isCommand = Object.values(Commands).includes(text as Commands)
