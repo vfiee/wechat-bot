@@ -51,7 +51,7 @@ async function onMessage(bot: Wechaty, message: Message) {
   // 如果是机器所有人, 通行
   const isOwnerContact = await isOwner(talker)
   if (isOwnerContact || (userWhiteList && userWhiteList.includes(name))) {
-    commandIns.run(bot, message, true)
+    commandIns.run(bot, message, isOwnerContact)
   }
 
   // 如果是白名单 tag user, 通行
@@ -68,7 +68,7 @@ async function run() {
   })
   bot.use([
     QRCodeTerminal({ small: true }),
-    // EventLogger(),
+    EventLogger(),
     FriendshipAccepter(),
     RoomInvitationAccepter(),
     ...plugins

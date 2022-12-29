@@ -28,18 +28,20 @@ export const openAiCommands: CommandConfig[] = [
         if (isAskingAi) {
           isAskingAi = false
         }
-        message.say(`${replayPrefix} 已终止`)
+        message.say(`${replayPrefix}  已终止`)
         return
       }
       if (isAskingAi) {
-        return message.say(`${replayPrefix} 我太忙了, 请您稍后再问...`)
+        return message.say(`${replayPrefix}  我太忙了, 请您稍后再问...`)
       }
-      message.say(`${replayPrefix} ${WAIT_MSG}`)
+      message.say(`${replayPrefix}  ${WAIT_MSG}`)
       isAskingAi = true
-      const answer = await getOpenAiReply(ask).finally(() => {
-        isAskingAi = false
-      })
-      message.say(`${replayPrefix} 仅供参考 \n${answer}`)
+      const answer = await getOpenAiReply(ask)
+        .catch((error) => `出错了  ${JSON.stringify(error)}`)
+        .finally(() => {
+          isAskingAi = false
+        })
+      message.say(`${replayPrefix}  仅供参考 \n${answer}`)
     }
   }
 ]

@@ -17,7 +17,7 @@ export async function getOpenAiReply(prompt) {
     top_p: 1,
     frequency_penalty: 0.0,
     presence_penalty: 0.6,
-    stop: ['Human:', ' AI:']
+    stop: [' Human:', ' AI:']
   })
   return await markdownToText(response?.data?.choices[0]?.text)
 }

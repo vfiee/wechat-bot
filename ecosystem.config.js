@@ -9,7 +9,7 @@ module.exports = {
       error_file: '/dev/null',
       env: {
         NODE_ENV: 'production',
-        OPEN_AI_API_KEY: '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'
+        OPEN_AI_API_KEY: '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'
       },
       log_date_format: 'YYYY-MM-DD'
     }
